@@ -4,8 +4,13 @@ Pokemon Altair @攻略wiki の「ポケモン図鑑V」（386 匹）をスクレ
 
 ## 構成
 
-- `index.html` … アプリ本体（`data.js` を読む）。ハッシュルーティングの SPA
-- `build.py` … `data/dex2.json` + `data/moves_base.tsv` + `img/*.png` → `data.js` と `dist/vega-dex.html`（単一ファイル）、`dist/vega-dex.artifact.html`（Artifact 用に doctype 等を剥がした版）
+- `index.html` … ヘッダー・フッターだけの HTML。`data.js` と `dist/app.js` / `dist/app.css` を読む
+- `src/` … アプリ本体（TypeScript、ハッシュルーティングの SPA）。esbuild で `dist/app.js` と `dist/app.css` にバンドルする
+  - `main.ts`（ルート定義・起動）、`router.ts`、`data.ts`（`VEGA` の型と索引）、`html.ts`（HTML 文字列の部品）、`typechart.ts`（タイプ相性）、`gyms.ts`、`stages.ts`（進行度別のお勧め）、`figures.ts`（場所・トレーナー画像）、`search.ts`
+  - `map/tiles.ts`（タイル座標・道路の経路・ラベル位置・`parseHab()`）、`map/render.ts`（`tmap()`）
+  - `views/*.ts` … ページごとの描画とイベント登録（`list` 図鑑一覧、`pokemon` 詳細、`moves` 技、`map` マップ、`loc` 場所、`guide` 攻略ページ、`chart` 攻略チャート ほか）
+  - `styles/*.css` … 画面ごとに分けた CSS（`main.ts` の import 順で連結される）
+- `build.py` … `data/dex2.json` + `data/moves_base.tsv` + `img/*.png` → `data.js`。さらに `index.html` に `data.js`・`dist/app.js`・`dist/app.css` を埋め込んで `dist/vega-dex.html`（単一ファイル）、`dist/vega-dex.artifact.html`（Artifact 用に doctype 等を剥がした版）を作る
 - `data/dex2.json` … wiki の各ポケモンページをブラウザ内でパースした生データ（2026-09-06 取得）
 - `data/moves_base.tsv` … wiki の技データに無い第 1〜3 世代の技（第 5 世代基準の数値、手書き）
 - `img/NNN.png` … wiki の図鑑画面スクショ（240x160）。build.py が右側 64x64 を切り出して背景を透過し data URI で埋め込む
@@ -17,8 +22,9 @@ Pokemon Altair @攻略wiki の「ポケモン図鑑V」（386 匹）をスクレ
 2. `tools/recv.py 8766` を起動（`.claude/launch.json` の `recv`）
 3. ページ内 JS で 386 ページを fetch → パース → `<form method=POST action=http://127.0.0.1:8766/dex2.json>` で送信
    （fetch/sendBeacon/window.open は Browser pane が localhost 宛を遮断するので、フォーム送信によるトップレベル遷移だけが通る）
-4. `python3 build.py`
-5. ローカル確認: `.claude/launch.json` の `vega-dex`（python http.server 8767）
+4. `npm install`（初回のみ）→ `npm run build`（`tsc --noEmit` → esbuild → `build.py`）
+   - コードだけ変えたときは `npm run bundle`（`index.html` 経由のローカル確認ならこれで足りる）。`npm run watch` で自動再バンドル
+5. ローカル確認: `.claude/launch.json` の `vega-dex`（python http.server 8767）で `index.html` を開く
 
 ## 機能
 
@@ -36,7 +42,7 @@ Pokemon Altair @攻略wiki の「ポケモン図鑑V」（386 匹）をスクレ
 ## トーホク地方マップ
 
 - `map/world_map_rgb.png` … ゲーム内タウンマップ（192x144、8px タイル 24x18）。出典は Pokémon Vega Wiki (fandom) の `World_map.png`（非公式ポケモンWiki aon49 の image.jpg と同一画像）
-- 町 11・ダンジョン 8・道路/水道 23 のタイル座標は `index.html` の `TOWNS` / `DUNGEONS` / `ROUTES` に直書き。攻略チャート（wiki page 39）の接続関係から割り当てた
+- 町 11・ダンジョン 8・道路/水道 23 のタイル座標は `src/map/tiles.ts` の `TOWNS` / `DUNGEONS` / `ROUTES` に直書き。攻略チャート（wiki page 39）の接続関係から割り当てた
 - ひのしま・かみなりのしま・こおりのしまの 3 島（アーシアとう周辺の 3 つの□）の対応は推定
 - はなれのことう・スフィアいせきはタウンマップに無いので「マップ外」扱い
 - `map/assign_check.png` は割り当てを重ねた確認用画像（`build.py` とは無関係、手動生成）

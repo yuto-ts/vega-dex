@@ -1,0 +1,15 @@
+{
+  "name": "vega-dex",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bundle": "esbuild src/main.ts --bundle --format=iife --target=es2022 --outfile=dist/app.js",
+    "watch": "npm run bundle -- --watch",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && npm run bundle && python3 build.py"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}

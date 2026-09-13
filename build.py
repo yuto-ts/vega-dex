@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""data/dex2.json + data/moves_base.tsv + img/*.png → dist/vega-dex.html（単一ファイル）と data.js
+"""data/dex2.json + data/moves_base.tsv + img/*.png → data.js、
+index.html + dist/app.js + dist/app.css（src/ を esbuild でバンドルしたもの）+ data.js → dist/vega-dex.html（単一ファイル）
 
-使い方: python3 build.py            # dist/vega-dex.html と data.js を生成
+使い方: npm run build               # 型チェック → バンドル → このスクリプト
+        python3 build.py            # バンドル済みの dist/app.js を使って data.js と dist/vega-dex.html を生成
         python3 build.py --no-img   # 画像を埋め込まない（デバッグ用）
 """
 import json, re, sys, os, base64, io
@@ -344,8 +346,15 @@ data = {
 js = 'const VEGA = ' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n'
 open('data.js', 'w', encoding='utf-8').write(js)
 
+if not os.path.exists('dist/app.js'):
+    sys.exit('dist/app.js がありません。先に npm run bundle を実行してください')
+app_js = open('dist/app.js', encoding='utf-8').read()
+app_css = open('dist/app.css', encoding='utf-8').read()
+assert '</script' not in app_js and '</style' not in app_css
 html = open('index.html', encoding='utf-8').read()
+html = html.replace('<link rel="stylesheet" href="dist/app.css">', '<style>\n' + app_css + '</style>')
 html = html.replace('<script src="data.js"></script>', '<script>\n' + js + '</script>')
+html = html.replace('<script src="dist/app.js"></script>', '<script>\n' + app_js + '</script>')
 os.makedirs('dist', exist_ok=True)
 open('dist/vega-dex.html', 'w', encoding='utf-8').write(html)
 # Artifact 用: <!doctype>/<html>/<head>/<body> を剥がした版
