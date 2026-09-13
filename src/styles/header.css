@@ -1,0 +1,25 @@
+/* header */
+.top{background:var(--head);color:var(--head-ink);position:sticky;top:0;z-index:20;box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.top-in{max-width:1120px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-family:var(--f-head);font-weight:900;font-size:22px;letter-spacing:.02em;color:var(--head-ink);display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.brand small{font-family:var(--f-body);font-weight:500;font-size:11px;opacity:.75;letter-spacing:.08em}
+.brand:hover{text-decoration:none}
+.brand .star{color:var(--accent)}
+.game{font-family:var(--f-head);font-weight:700;font-size:13px;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.game:hover{text-decoration:none;filter:brightness(1.05)}
+.search{position:relative;flex:1 1 260px;max-width:460px}
+.search input{width:100%;padding:8px 12px 8px 34px;border:1px solid transparent;border-radius:6px;background:rgba(255,255,255,.14);color:var(--head-ink);font:inherit;font-size:14px}
+.search input::placeholder{color:rgba(255,255,255,.65)}
+.search input:focus{background:var(--bg);color:var(--ink);outline:2px solid var(--accent);outline-offset:0}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;opacity:.8;pointer-events:none}
+.sug{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);overflow:hidden;display:none;max-height:70vh;overflow-y:auto}
+.sug.on{display:block}
+.sug a{display:flex;align-items:center;gap:10px;padding:6px 10px;color:var(--ink);border-bottom:1px solid var(--line2)}
+.sug a:last-child{border-bottom:0}
+.sug a:hover,.sug a.act{background:var(--hover);text-decoration:none}
+.sug .k{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.sug img{width:32px;height:32px}
+.nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav a{color:var(--head-ink);padding:6px 10px;border-radius:6px;font-weight:500;font-size:13px;opacity:.9}
+.nav a:hover{background:rgba(255,255,255,.12);text-decoration:none;opacity:1}
+.nav a.cur{background:rgba(255,255,255,.18);opacity:1}

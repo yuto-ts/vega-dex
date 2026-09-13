@@ -11,3 +11,4 @@ map/trainers.png
 map/grid_x8.png
 # OS
 .DS_Store
+node_modules/

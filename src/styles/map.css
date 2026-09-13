@@ -1,0 +1,60 @@
+/* トーホク地方マップ */
+.tmap{position:relative;width:768px;max-width:100%;aspect-ratio:4/3;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#7fabee;user-select:none;font-family:var(--f-head)}
+.tmap svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.tmap svg.map{position:static;display:block}
+.tmap .land{fill:#8fd06a;stroke:#3f8a3a;stroke-width:1.1;stroke-linejoin:round}
+.tmap .road-e{fill:none;stroke:#a1732a;stroke-width:3.6;stroke-linejoin:round;stroke-linecap:round}
+.tmap .road{fill:none;stroke:#f2c96e;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.tmap .sea-e{fill:none;stroke:#3d74cc;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
+.tmap .sea{fill:none;stroke:#d9ecff;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:2.4 1.8}
+.tmap .town{fill:#ef5a4c;stroke:#fff;stroke-width:1;paint-order:stroke;filter:drop-shadow(0 .4px .4px rgba(0,0,0,.45))}
+.tmap .town-in{fill:#ffd9d2}
+.tmap .dg{fill:#fbfbfd;stroke:#4c5a70;stroke-width:.8}
+.tmap text.lbl{font-size:4.2px;font-weight:700;fill:#1c2230;stroke:#fff;stroke-width:1.4;paint-order:stroke;stroke-linejoin:round;letter-spacing:.01em}
+.tmap text.lbl.dg{font-size:4px;font-weight:700;fill:#2b3a55;display:none}
+.tmap text.lbl.dg.show,.tmap text.lbl.dg.hov{display:block}
+.tmap text.lbl.dg.hov{fill:#1c2230;stroke:#fff8d6}
+.tmap .gymmark rect{fill:#f2b73f;stroke:#7a4d00;stroke-width:.5}
+.tmap .gymmark text{font-size:3.6px;font-weight:900;fill:#3a2a00}
+.tmap .hot.gymhot{border-radius:2px;z-index:2}
+.gymno{display:inline-block;min-width:16px;height:16px;line-height:16px;text-align:center;font-size:11px;font-weight:900;border-radius:3px;background:var(--accent);color:var(--accent-ink);vertical-align:middle}
+.locrow{display:flex;gap:6px;align-items:center;break-inside:avoid}
+.locrow>a:first-child{flex:1}
+.loclist .gymlink{flex:none;font-size:11px;font-weight:700;padding:0 6px 0 3px;border:1px solid var(--accent);border-radius:999px;color:var(--ink);white-space:nowrap;background:var(--bg2)}
+.loclist .gymlink:hover{background:var(--accent);text-decoration:none}
+.gymbox{display:flex;gap:14px;align-items:center;padding:10px 14px;border:1px solid var(--accent);border-radius:10px;background:var(--bg2);color:var(--ink);margin:0 0 14px;max-width:560px}
+.gymbox:hover{background:var(--hover);text-decoration:none}
+.gymbox img.tr{width:64px;height:64px;image-rendering:pixelated}
+.gymbox .go{color:var(--link);font-size:12px;font-weight:700}
+/* ファイアレッドの図鑑「ぶんぷ」風: 明るいピンク寄りの赤い四角が点滅する */
+.tmap .hl-fill{fill:rgba(248,96,112,.72);shape-rendering:crispEdges}
+.tmap .hl-fill.dim{fill:rgba(0,0,0,.18)}
+.tmap .hl-line{fill:none;stroke:#fff0f2;stroke-width:2;stroke-linejoin:miter;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 1px rgba(120,0,20,.7))}
+.tmap .hot{position:absolute;box-sizing:border-box;display:block;cursor:pointer}
+.tmap .hot.hov,.tmap .hot:focus-visible{background:rgba(255,255,255,.4)}
+/* 進行度別のお勧め */
+.stage{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+.stage select{font:inherit;font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+.recs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+.rec{display:grid;grid-template-columns:48px 1fr;gap:8px;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--bg2)}
+.rec.wiki{border-color:var(--accent)}
+.rec img{width:48px;height:48px}
+.rec .nm{font-weight:700}
+.rec .nm .arrow{color:var(--muted);font-weight:400;font-size:12px}
+.rec .ds{font-size:12px;color:var(--ink);margin:2px 0}
+.rec .wh{font-size:11px;color:var(--muted)}
+.rec .tag{font-size:10px;font-weight:700;padding:0 5px;border-radius:3px;background:var(--accent);color:var(--accent-ink);margin-left:4px;vertical-align:middle}
+@media (prefers-reduced-motion:no-preference){.tmap .hl-fill:not(.dim),.tmap .hl-line{animation:hlp 1s steps(1,end) infinite}}
+@keyframes hlp{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
+.mapwrap{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+@media (max-width:900px){.mapwrap{grid-template-columns:1fr}}
+.hablist{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+.hablist li{display:flex;gap:8px;align-items:baseline;font-size:13px}
+.hablist .pin{flex:none;width:12px;height:12px;border-radius:2px;background:rgba(242,183,63,.6);border:1px solid #c9922a;position:relative;top:1px}
+.hablist .pin.none{background:var(--line2);border-color:var(--line)}
+.hablist .sub{color:var(--muted);font-size:12px}
+.loclist{columns:2;column-gap:24px;font-size:13px}
+@media (max-width:600px){.loclist{columns:1}}
+.loclist h3{font-family:var(--f-head);font-size:13px;margin:8px 0 4px;color:var(--muted);break-after:avoid}
+.loclist a{display:flex;justify-content:space-between;gap:8px;padding:1px 0;break-inside:avoid}
+.loclist a span{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}

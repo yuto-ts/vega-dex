@@ -1,0 +1,76 @@
+/* wiki 由来の攻略ページ */
+.wiki{max-width:860px;line-height:1.7}
+.wiki h3{font-family:var(--f-head);font-size:16px;margin:26px 0 8px;padding-left:10px;border-left:4px solid var(--accent)}
+.wiki h4{font-family:var(--f-head);font-size:14px;margin:18px 0 6px;padding-bottom:3px;border-bottom:1px solid var(--line)}
+.wiki h5{font-size:13px;margin:12px 0 4px}
+.wiki table{width:auto;max-width:100%;margin:6px 0 10px;border:1px solid var(--line);border-radius:6px;font-size:13px}
+.wiki th{position:static}
+.wiki td,.wiki th{border-right:1px solid var(--line2)}
+.wiki td:last-child,.wiki th:last-child{border-right:0}
+.wiki td[style*="background-color"]{color:#1c2230}
+.wiki details{border:1px solid var(--line);border-radius:6px;padding:6px 12px;margin:8px 0;background:var(--bg2)}
+.wiki summary{cursor:pointer;font-weight:700;color:var(--link)}
+.wiki details[open] summary{margin-bottom:6px}
+.wiki big{font-size:15px;font-weight:700}
+.wiki ul,.wiki ol{padding-left:1.5em}
+.wiki hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.wiki .tbl-wrap{margin:6px 0 10px}
+.toc{font-size:13px;background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:8px 14px;margin:0 0 14px;max-width:860px}
+.toc a{margin-right:12px;white-space:nowrap;line-height:1.9}
+.toc .h4{font-size:12px;color:var(--muted)}
+.enc-area{display:flex;align-items:baseline;gap:8px;font-family:var(--f-head);font-weight:700;font-size:14px;margin:14px 0 6px}
+.enc-area .post{font-size:11px;font-weight:700;padding:0 7px;border-radius:999px;background:var(--head);color:var(--head-ink)}
+.terrain{display:inline-block;font-size:11px;padding:0 6px;border-radius:3px;background:var(--tint);color:var(--tint-ink);white-space:nowrap}
+/* 場所・トレーナー画像 */
+.locfig{margin:0 0 14px;display:inline-block;max-width:100%}
+.locfig img{display:block;max-width:100%;max-height:520px;border:1px solid var(--line);border-radius:6px;background:var(--bg2)}
+.locfig img.px{image-rendering:pixelated;width:480px;max-width:100%}
+.locfig figcaption{font-size:11px;color:var(--muted);margin-top:4px}
+.leader{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--bg2);margin:0 0 14px}
+.leader img.tr{width:128px;height:128px;image-rendering:pixelated;background:var(--bg);border:1px solid var(--line);border-radius:8px}
+.leader .who{font-family:var(--f-head);font-size:20px;font-weight:700}
+.leader .role{font-size:12px;color:var(--muted)}
+.leader .thumb{margin-left:auto;text-align:center;font-size:12px}
+.leader .thumb img{display:block;width:220px;max-width:100%;border:1px solid var(--line);border-radius:6px}
+.trs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.trs .tr1{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;width:96px}
+.trs .tr1 img{width:96px;height:96px;image-rendering:pixelated;background:var(--bg2);border:1px solid var(--line);border-radius:8px;object-fit:contain}
+.wiki td img.s32{width:32px;height:32px;vertical-align:middle;margin:-4px 4px -4px 0}
+.src{font-size:11px;color:var(--muted)}
+.optlab{color:var(--muted);font-weight:700;margin-right:2px}
+/* 攻略チャート */
+.chart-toc .toc-part{padding:4px 0;border-bottom:1px solid var(--line2)}
+.chart-toc .toc-part:last-child{border-bottom:0}
+.chart-toc .toc-part b{display:inline-block;min-width:110px;color:var(--muted);font-size:12px}
+.chart-intro{max-width:860px;margin:0 0 12px;border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:var(--bg2)}
+.chart-intro summary{cursor:pointer;font-weight:700;color:var(--link)}
+.chapter{display:grid;grid-template-columns:300px 1fr;gap:16px;align-items:center;margin:22px 0 10px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg2)}
+.chapter h3{font-family:var(--f-head);font-size:18px;margin:0 0 6px}
+.chapter .chapter-locs{font-size:13px;line-height:1.9}
+.chapter .tmap{border-radius:6px}
+@media (max-width:760px){.chapter{grid-template-columns:1fr}}
+.step{display:grid;grid-template-columns:200px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line2)}
+@media (max-width:640px){.step{grid-template-columns:1fr}}
+.step-img img{display:block;width:200px;max-width:100%;max-height:200px;object-fit:cover;object-position:top;border:1px solid var(--line);border-radius:6px;background:var(--bg2)}
+.step-img .tmap{width:200px}
+.step-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.step-head h4{font-family:var(--f-head);font-size:16px;margin:0}
+.step-no{display:inline-block;min-width:24px;height:24px;line-height:24px;text-align:center;border-radius:6px;background:var(--head);color:var(--head-ink);font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.step-trs{display:inline-flex;gap:6px;margin-left:auto}
+.step-trs span{display:inline-flex;flex-direction:column;align-items:center;font-size:10px;color:var(--muted)}
+.step-trs img.tr{width:48px;height:48px;image-rendering:pixelated;background:var(--bg2);border:1px solid var(--line);border-radius:6px}
+.step-wiki{max-width:none}
+.step.flash{background:var(--tint);transition:background .4s}
+.step{scroll-margin-top:70px}
+.step-wiki>ul{margin:0;padding-left:1.3em}
+.step-wiki>ul>li{margin:2px 0}
+.step-wiki details{margin:6px 0}
+.step-wiki h3,.step-wiki h4{font-size:14px;margin:10px 0 4px;border:0;padding:0}
+.floors{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+.floors .floor{margin:0;max-width:100%}
+.floors .floor img{display:block;max-height:260px;max-width:100%;border:1px solid var(--line);border-radius:6px;background:var(--bg2);cursor:zoom-in}
+.floors .floor figcaption{font-size:12px;color:var(--muted);margin-top:3px;text-align:center}
+.zoom{position:fixed;inset:0;z-index:50;background:rgba(10,14,24,.88);display:flex;align-items:center;justify-content:center;padding:24px;cursor:zoom-out;overflow:auto}
+.zoom img{max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated;border-radius:6px;background:#fff}
+.zoom.native img{max-width:none;max-height:none;width:auto;height:auto}
+.zoom .cap{position:fixed;left:0;right:0;bottom:12px;text-align:center;color:#fff;font-size:13px;text-shadow:0 1px 2px #000}
