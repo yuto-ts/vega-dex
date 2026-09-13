@@ -1,0 +1,13 @@
+# build.py の生成物
+dist/
+data.js
+# スクレイプ受信サーバーの一時出力・確認用レンダリング
+data/img_urls.txt
+map/preview.svg
+map/preview.svg.png
+map/preview_crop.png
+map/contact.png
+map/trainers.png
+map/grid_x8.png
+# OS
+.DS_Store
