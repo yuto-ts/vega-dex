@@ -32,6 +32,7 @@ export function vHome() {
       <li><a href="#/vega/abilities">特性一覧<span>特性ごとのポケモン</span></a></li>
       <li><a href="#/vega/map">トーホク地方マップ<span>場所ごとの出現ポケモン</span></a></li>
       <li><a href="#/vega/types">タイプ相性表<span>17 タイプ（フェアリー無し）</span></a></li>
+      <li><a href="#/vega/ev">努力値カウンター<span>たおす相手を登録して討伐数と努力値を集計</span></a></li>
     </ul></div>
   </div>
   <h2>タイプから探す</h2>

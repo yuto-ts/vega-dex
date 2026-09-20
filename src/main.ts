@@ -4,6 +4,7 @@ import './styles/components.css';
 import './styles/pokemon.css';
 import './styles/map.css';
 import './styles/guide.css';
+import './styles/ev.css';
 
 import { startRouter } from './router';
 import { initSearch } from './search';
@@ -19,6 +20,7 @@ import { vTypes } from './views/matrix';
 import { vMap, bindStage } from './views/map';
 import { vLoc } from './views/loc';
 import { vGuideIndex, vGuide, bindWiki } from './views/guide';
+import { vEv, bindEv } from './views/ev';
 
 // [data-jump] のリンクはページ内の要素へスクロールし、一瞬ハイライトする（攻略チャートの目次など）
 document.addEventListener('click', e => {
@@ -48,6 +50,7 @@ startRouter({
     loc: ({ seg }) => vLoc(seg[1]),
     guide: vGuideIndex,
     g: ({ seg }) => vGuide(seg[1]),
+    ev: vEv,
   },
   // 描画のたびに、そのページにある要素へイベントを付け直す（該当要素が無ければ何もしない）
   afterRender: () => {
@@ -58,5 +61,6 @@ startRouter({
     bindStage();
     bindMapHover();
     bindMoveTabs();
+    bindEv();
   },
 });
