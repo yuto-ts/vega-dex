@@ -2,7 +2,7 @@
 
 改造ポケモン「ポケットモンスター ベガ」の図鑑・技・攻略情報を、ポケモン徹底攻略風に検索・閲覧できる Web サイトです。ビルドすると単一の HTML ファイルになります。
 
-公開ページ: https://claude.ai/code/artifact/57eac4e9-bfd4-4014-8193-90caa231b3bd
+公開ページ: https://yuto-ts.github.io/vega-dex/ （main への push で GitHub Actions がビルドして GitHub Pages に配信します。設定は `.github/workflows/pages.yml`）
 
 データの出典は [Pokemon Altair @攻略wiki](https://w.atwiki.jp/altair1/) と [Pokémon Vega Wiki (fandom)](https://pokemon-vega.fandom.com/) です。非公式のファンサイトです。
 
