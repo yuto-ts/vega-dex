@@ -7,7 +7,7 @@
 .brand .star{color:var(--accent)}
 .game{font-family:var(--f-head);font-weight:700;font-size:13px;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:2px 10px;white-space:nowrap}
 .game:hover{text-decoration:none;filter:brightness(1.05)}
-.search{position:relative;flex:1 1 260px;max-width:460px}
+.search{position:relative;flex:1 1 200px;max-width:460px;min-width:0}
 .search input{width:100%;padding:8px 12px 8px 34px;border:1px solid transparent;border-radius:6px;background:rgba(255,255,255,.14);color:var(--head-ink);font:inherit;font-size:14px}
 .search input::placeholder{color:rgba(255,255,255,.65)}
 .search input:focus{background:var(--bg);color:var(--ink);outline:2px solid var(--accent);outline-offset:0}
@@ -20,6 +20,9 @@
 .sug .k{font-size:11px;color:var(--muted);margin-left:auto;white-space:nowrap}
 .sug img{width:32px;height:32px}
 .nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
-.nav a{color:var(--head-ink);padding:6px 10px;border-radius:6px;font-weight:500;font-size:13px;opacity:.9}
+.nav a{color:var(--head-ink);padding:6px 9px;white-space:nowrap;border-radius:6px;font-weight:500;font-size:13px;opacity:.9}
 .nav a:hover{background:rgba(255,255,255,.12);text-decoration:none;opacity:1}
 .nav a.cur{background:rgba(255,255,255,.18);opacity:1}
+/* 中幅以下ではブランドの英字サブタイトルを隠し、ナビを 1 行に収める */
+@media (max-width:1280px){.brand small{display:none}}
+@media (max-width:640px){.nav{margin-left:0;width:100%}.nav a{padding:6px 8px}}
